@@ -1,0 +1,29 @@
+.nav {
+  grid-area: n;
+  background-color: cadetblue;
+  padding: 10px;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+  padding-bottom: 15px;
+}
+
+.item a.active {
+  color: gold;
+}
+
+.friends {
+  display: flex;
+  justify-content: space-around;
+}
+.friends > div {
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.friends img {
+  width: 50px;
+}

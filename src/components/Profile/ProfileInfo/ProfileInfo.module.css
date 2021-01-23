@@ -1,0 +1,11 @@
+.description {
+  padding: 10px;
+}
+
+.backPhoto {
+  max-width: 720px;
+}
+
+.description img {
+  width: 80px;
+}
