@@ -4,11 +4,7 @@ import axios from 'axios'
 
 class Users extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    // }
-
-    componentDidMount = () => {
+    componentDidMount() {
         const usersUrl = 'https://social-network.samuraijs.com/api/1.0/users'
         axios.get(usersUrl)
             .then(res => {
