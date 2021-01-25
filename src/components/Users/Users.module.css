@@ -1,4 +1,16 @@
+.user {
+  display: flex;
+}
 
+.imgBlock {
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.btnBlock {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 .photo {
-  width: 100px;
+  width: 50px;
 }

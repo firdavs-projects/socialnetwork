@@ -1,42 +1,54 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './Users.module.css'
+import axios from 'axios'
 
-const Users = (props) => {
+class Users extends Component {
 
-    if (props.users.length === 0)
-        props.setUsers([
-            { id: 1, photoUrl: 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png', followed: false, fullName: 'Firdavs', status: 'I`m Cool', location: { city: 'Khujand', country: 'Tajikistan' } },
-            { id: 2, photoUrl: 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png', followed: true, fullName: 'Dima', status: 'I`m Cool too', location: { city: 'Moscow', country: 'Russia' } },
-        ])
+    // constructor(props) {
+    //     super(props)
+    // }
 
-    return (
-        <div>
-            {
-                props.users.map(u => (
-                    <div key={u.id}>
-                        <span>
-                            <div>
-                                <img className={styles.photo} src={u.photoUrl} alt="" />
-                            </div>
-                            <div>
-                                <button onClick={() => { props.follow(u.id) }}>{u.followed ? 'Unfollow' : 'Follow'}</button>
-                            </div>
-                        </span>
-                        <span>
+    componentDidMount = () => {
+        const usersUrl = 'https://social-network.samuraijs.com/api/1.0/users'
+        axios.get(usersUrl)
+            .then(res => {
+                this.props.setUsers(res.data.items)
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                {
+                    this.props.users.map(u => (
+                        <div className={styles.user} key={u.id}>
                             <span>
-                                <div>{u.fullName}</div>
-                                <div>{u.status}</div>
+                                <div className={styles.imgBlock}>
+                                    <img className={styles.photo} src={u.photos.small !== null
+                                        ? u.photos.small
+                                        : 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png'}
+                                        alt={u.name} />
+                                </div>
+                                <div className={styles.btnBlock}>
+                                    <button onClick={() => { this.props.follow(u.id) }}>{u.followed ? 'Unfollow' : 'Follow'}</button>
+                                </div>
                             </span>
                             <span>
+                                <span>
+                                    <div>{u.name}</div>
+                                    <div>{u.status}</div>
+                                </span>
+                                {/* <span>
                                 <div>{u.location.country}</div>
                                 <div>{u.location.city}</div>
+                            </span> */}
                             </span>
-                        </span>
-                    </div>
-                ))
-            }
-        </div>
-    )
+                        </div>
+                    ))
+                }
+            </div>
+        )
+    }
 }
 
 export default Users
