@@ -4,7 +4,7 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message'
 
 const Dialogs = (props) => {
-    const newMessageBody = props.state.newMessageBody
+    const newMessageBody = props.dialogsPage.newMessageBody
 
     const onSendMessageClick = () => {
         props.sendMessage()
@@ -19,14 +19,14 @@ const Dialogs = (props) => {
         <div className={s.dialogs}>
             <div className={s.items}>
                 {
-                    props.state.dialogs.map(o => <Dialog key={o.id} name={o.name} id={o.id} />)
+                    props.dialogsPage.dialogs.map(o => <Dialog key={o.id} name={o.name} id={o.id} />)
                 }
                 <hr />
             </div>
             <div >
                 <div className={s.messages}>
                     {
-                        props.state.messages.map(o => <Message key={o.id} message={o.message} />)
+                        props.dialogsPage.messages.map(o => <Message key={o.id} message={o.message} />)
                     }
                     <hr />
                 </div>

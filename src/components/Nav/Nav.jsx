@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import StoreContext from '../../StoreContext'
 import Friend from './Friends/Friend'
 import s from './Nav.module.css'
 
@@ -25,10 +24,12 @@ const Nav = () => {
         </div>
       </nav>
       <hr />
-      <div>
+
+
+      {/*<div>
         Histories
       </div>
-      <StoreContext.Consumer>{
+       <StoreContext.Consumer>{
         (store) => {
           return (
             <div className={s.friends}>
@@ -38,7 +39,7 @@ const Nav = () => {
         }
       }
       </StoreContext.Consumer>
-      <hr />
+      <hr /> */}
 
     </>
   )

@@ -17,13 +17,13 @@ const MyPosts = (props) => {
         <div className={s.myPosts}>
             <h3>My posts</h3>
             <div>
-                <textarea onChange={onPostChange} value={props.newPostText} />
+                <textarea onChange={onPostChange} value={props.profilePage.newPostText} />
             </div>
             <div>
                 <button onClick={onAddPost}>Add post</button>
             </div>
             <div className={s.posts}>
-                {props.posts.map(o => <Post key={o.id} post={o.post} likes={o.likes} />)}
+                {props.profilePage.posts.map(o => <Post key={o.id} post={o.post} likes={o.likes} />)}
             </div>
         </div>
     )
