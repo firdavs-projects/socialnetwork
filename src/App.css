@@ -1,19 +1,32 @@
-.app-wrapper {
+/* .app-wrapper {
   margin: 0 auto;
   display: grid;
   grid-template-areas:
     "h h"
     "n c";
-  width: 1200px;
-
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
+} */
+
+
+.app-wrapper {
+  margin: 0px 10%;
+  display: block;
 }
 
+
+@media (max-width: 768px) {
+  .app-wrapper {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+
 .app-wrapper-content{
-  background-color: burlywood;
-  grid-area: c;
+  /* background-color: burlywood; */
+  /* grid-area: c; */
 }
 
 

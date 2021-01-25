@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import StoreContext from '../../StoreContext'
 import Friend from './Friends/Friend'
 import s from './Nav.module.css'
 
-const Nav = (props) => {
+const Nav = () => {
   return (
     <>
       <nav className={s.nav}>
@@ -22,15 +23,23 @@ const Nav = (props) => {
         <div className={s.item}>
           <NavLink to="/">Settings</NavLink>
         </div>
-        <hr />
-        <div>
-          <h3>Friends</h3>
-        </div>
-        <div className={s.friends}>
-
-          {props.state.friends.map(o => <Friend name={o.name} key={Math.random()} />)}
-        </div>
       </nav>
+      <hr />
+      <div>
+        Histories
+      </div>
+      <StoreContext.Consumer>{
+        (store) => {
+          return (
+            <div className={s.friends}>
+              {store.getState().sideBar.friends.map(o => <Friend name={o.name} key={Math.random()} />)}
+            </div>
+          )
+        }
+      }
+      </StoreContext.Consumer>
+      <hr />
+
     </>
   )
 }

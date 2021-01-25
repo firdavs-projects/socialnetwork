@@ -1,11 +1,19 @@
 .nav {
-  grid-area: n;
-  background-color: cadetblue;
-  padding: 10px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.item a {
-  color: white;
+@media (max-width: 768px) {
+  .nav {
+    /* grid-area: n; */
+    display: block;
+    width: 100%;
+  }
+}
+
+.nav a {
+  padding: 10px;
+  display: block;
   text-decoration: none;
   padding-bottom: 15px;
 }
@@ -19,7 +27,6 @@
   justify-content: space-around;
 }
 .friends > div {
-  color: white;
   padding: 10px;
   text-align: center;
 }

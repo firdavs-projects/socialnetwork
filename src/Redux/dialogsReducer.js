@@ -5,7 +5,11 @@ const initialState = {
     dialogs: [
         { id: 1, name: 'Firdavs' },
         { id: 2, name: 'Fedya' },
-        { id: 3, name: 'Abdullo' }
+        { id: 3, name: 'Abdullo' },
+        { id: 4, name: 'Ali' },
+        { id: 5, name: 'Rahim' },
+        { id: 6, name: 'Abdu' },
+        { id: 7, name: 'Salim' }
     ],
     messages: [
         { id: 1, message: 'Hi' },
