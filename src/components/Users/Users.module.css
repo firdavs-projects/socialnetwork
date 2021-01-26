@@ -11,6 +11,14 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
+
 .photo {
   width: 50px;
+}
+
+.selectedPage {
+  font-weight: bold;
+  color: gold;
+  margin-right: 10px;
+  padding: 3px;
 }
