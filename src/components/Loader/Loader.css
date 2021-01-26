@@ -1,3 +1,8 @@
+.containerLoader {
+  display: flex;
+  justify-content: center;
+}
+
 .lds-facebook {
   display: inline-block;
   position: relative;
