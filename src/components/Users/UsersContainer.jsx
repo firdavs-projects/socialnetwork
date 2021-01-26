@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { followAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC, setIsFetching } from '../../Redux/usersReducer'
+import { follow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching } from '../../Redux/usersReducer'
 import axios from 'axios'
 import Users from './Users'
 import Loader from '../Loader/Loader'
@@ -55,24 +55,30 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPageAC(page))
-        },
-        setTotalUsersCount: (total) => {
-            dispatch(setTotalUsersCountAC(total))
-        },
-        setIsFetching: (isFetching) => {
-            dispatch(setIsFetching(isFetching))
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(followAC(userId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users))
+//         },
+//         setCurrentPage: (page) => {
+//             dispatch(setCurrentPageAC(page))
+//         },
+//         setTotalUsersCount: (total) => {
+//             dispatch(setTotalUsersCountAC(total))
+//         },
+//         setIsFetching: (isFetching) => {
+//             dispatch(setIsFetching(isFetching))
+//         }
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, {
+    follow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    setIsFetching,
+})(UsersContainer)

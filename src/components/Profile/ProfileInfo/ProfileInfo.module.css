@@ -9,3 +9,33 @@
 .description img {
   width: 80px;
 }
+
+.name {
+  font-weight: bold;
+  color: gold;
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+.links {
+  display: flex;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: block;
+    margin: 5px;
+    margin-bottom: 10px;
+  }
+
+  .links a {
+    display: block;
+  }
+}
+
+.links a {
+  display: flex;
+  text-decoration: none;
+}

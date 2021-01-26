@@ -1,12 +1,17 @@
 import React from 'react'
+import Loader from '../Loader/Loader'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 // import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-const Profile = () => {
+const Profile = (props) => {
+  if (!props.profile) {
+    return <Loader />
+  }
+
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfo profile={props.profile} />
       <MyPostsContainer />
     </div>
   )

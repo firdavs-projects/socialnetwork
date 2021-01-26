@@ -50,22 +50,22 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({
+export const follow = (userId) => ({
     type: FOLLOW,
     payload: userId
 })
 
-export const setUsersAC = (users) => ({
+export const setUsers = (users) => ({
     type: SET_USERS,
     payload: users
 })
 
-export const setCurrentPageAC = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE,
     payload: currentPage
 })
 
-export const setTotalUsersCountAC = (total) => ({
+export const setTotalUsersCount = (total) => ({
     type: SET_TOTAL_USERS_COUNT,
     payload: total
 })
