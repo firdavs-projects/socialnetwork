@@ -1,4 +1,5 @@
 const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
@@ -20,11 +21,23 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.payload) {
-                        return { ...u, followed: !u.followed }
+                        return { ...u, followed: true }
                     }
                     return u
                 })
             }
+
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.payload) {
+                        return { ...u, followed: false }
+                    }
+                    return u
+                })
+            }
+
         case SET_USERS:
             return {
                 ...state, users: action.payload
@@ -55,6 +68,11 @@ export const follow = (userId) => ({
     payload: userId
 })
 
+export const unfollow = (userId) => ({
+    type: UNFOLLOW,
+    payload: userId
+})
+
 export const setUsers = (users) => ({
     type: SET_USERS,
     payload: users
@@ -72,7 +90,7 @@ export const setTotalUsersCount = (total) => ({
 
 export const setIsFetching = (isFetching) => ({
     type: TOOGLE_IS_FETCHING,
-    payload:isFetching
+    payload: isFetching
 })
 
 
