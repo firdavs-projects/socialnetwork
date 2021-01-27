@@ -1,6 +1,6 @@
-import axios from 'axios'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { usersAPI } from '../../API/api'
 import styles from './Users.module.css'
 
 const Users = (props) => {
@@ -45,39 +45,28 @@ const Users = (props) => {
                         </NavLink>
                         <div className={styles.btnBlock}>
                             {u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.setFollowingInProgress(true, u.id)
 
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY": "8ac421a0-04c1-432d-80ca-1dcc953182a0"
-                                            }
-                                        })
-                                        .then(res => {
-                                            if (res.data.resultCode === 0) {
+                                    usersAPI.unFollow(u.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.unfollow(u.id)
                                             }
+                                            props.setFollowingInProgress(false, u.id)
                                         })
-
-
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
 
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY": "8ac421a0-04c1-432d-80ca-1dcc953182a0"
-                                            }
-                                        })
-                                        .then(res => {
-                                            if (res.data.resultCode === 0) {
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+
+                                    props.setFollowingInProgress(true, u.id)
+                                    usersAPI.follow(u.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.follow(u.id)
                                             }
+                                            props.setFollowingInProgress(false, u.id)
                                         })
-
-
                                 }}>Follow</button>
                             }
                         </div>
