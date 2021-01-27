@@ -1,17 +1,17 @@
 import React from 'react'
 import s from './ProfileInfo.module.css'
+import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const ProfileInfo = (props) => {
     return (
         <div>
-            <div>
-                <img className={s.backPhoto} src="https://kam-inform.com/wp-content/uploads/2017/11/17-11-02-cRAW-DSC07117_1.jpg" alt="" />
-            </div>
             <div className={s.description}>
                 <img src={props.profile.photos.large} alt="" />
                 <div className={s.name}>
                     {props.profile.fullName}
                 </div>
+                <ProfileStatus status='Hello' />
+
                 <div>
                     {'About Me: ' + props.profile.aboutMe}
                 </div>

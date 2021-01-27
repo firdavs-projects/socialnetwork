@@ -55,7 +55,6 @@ export default connect(mapStateToProps, {
     followUser
 })(UsersContainer)
 
-
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         follow: (userId) => {
