@@ -5,6 +5,7 @@ import { getProfile, getStatus, updateStatus } from '../../Redux/profileReducer'
 import { withRouter } from 'react-router-dom'
 // import { withAuthRedirect } from '../../HOC/withAuthRedirect'
 import { compose } from 'redux'
+import Loader from '../Loader/Loader'
 
 class ProfileContainer extends Component {
 
@@ -15,6 +16,9 @@ class ProfileContainer extends Component {
     }
 
     render() {
+        if (!this.props.profile) {
+            return <Loader />
+        }
         return (
             <div>
                 <Profile {...this.props}
