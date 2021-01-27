@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { usersAPI } from '../../API/api'
 import styles from './Users.module.css'
 
 const Users = (props) => {
@@ -14,17 +13,17 @@ const Users = (props) => {
 
     return (
         <div>
-
             <div>
                 {
                     pages.map(p => {
                         return <span key={p}
                             onClick={(ev) => { props.onPageChange(p) }}
-                            className={props.currentPage === p ? styles.selectedPage : styles.pages}>{p}</span>
+                            className={props.currentPage === p
+                                ? styles.selectedPage
+                                : styles.pages}>{p}</span>
                     })
                 }
             </div>
-
             {
                 props.users.map(u => (
                     <div className={styles.user} key={u.id}>
@@ -32,45 +31,32 @@ const Users = (props) => {
                             to={'/profile/' + u.id}
                         >
                             <div className={styles.imgBlock}>
-                                <img className={styles.photo} src={u.photos.small !== null
-                                    ? u.photos.small
-                                    : 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png'}
+                                <img className={styles.photo}
+                                    src={u.photos.small !== null
+                                        ? u.photos.small
+                                        : 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png'}
                                     alt={u.name} />
                                 <span>
                                     <div>{u.name}</div>
                                     <div>{u.status}</div>
                                 </span>
                             </div>
-
                         </NavLink>
                         <div className={styles.btnBlock}>
                             {u.followed
-                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.setFollowingInProgress(true, u.id)
+                                ? <button disabled={props.followingInProgress
+                                    .some(id => id === u.id)}
+                                    onClick={() => {
+                                        props.unfollowUser(u.id)
+                                    }}>Unfollow</button>
 
-                                    usersAPI.unFollow(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unfollow(u.id)
-                                            }
-                                            props.setFollowingInProgress(false, u.id)
-                                        })
-                                }}>Unfollow</button>
-
-                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-
-                                    props.setFollowingInProgress(true, u.id)
-                                    usersAPI.follow(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(u.id)
-                                            }
-                                            props.setFollowingInProgress(false, u.id)
-                                        })
-                                }}>Follow</button>
+                                : <button disabled={props.followingInProgress
+                                    .some(id => id === u.id)}
+                                    onClick={() => {
+                                        props.followUser(u.id)
+                                    }}>Follow</button>
                             }
                         </div>
-
                     </div>
                 ))
             }
