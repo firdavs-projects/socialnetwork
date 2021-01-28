@@ -1,6 +1,7 @@
 import { profileAPI } from "../API/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
 
 const initialState = {
     userId: null,
@@ -19,6 +20,12 @@ const authReducer = (state = initialState, action) => {
                 isAuth: true
             }
         }
+        case SET_LOGIN_DATA: {
+            return {
+                ...state,
+                isAuth: true
+            }
+        }
 
         default:
             return state
@@ -28,6 +35,10 @@ const authReducer = (state = initialState, action) => {
 export const setUserData = (userId, email, login) => ({
     type: SET_USER_DATA,
     payload: { userId, email, login }
+})
+
+const setLoginData = () => ({
+    type: SET_LOGIN_DATA,
 })
 
 export const authMe = () => {
@@ -41,5 +52,17 @@ export const authMe = () => {
             })
     }
 }
+
+export const loginMe = (formData) => {
+    return (dispatch) => {
+        profileAPI.login(formData)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(setLoginData())
+                }
+            })
+    }
+}
+
 
 export default authReducer

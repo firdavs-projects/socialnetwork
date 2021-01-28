@@ -29,15 +29,18 @@ export const profileAPI = {
         return instance.get(`/profile/${userId ? userId : 14387}`)
             .then(res => res.data)
     },
-    auth() {
-        return instance.get('/auth/me')
-            .then(res => res.data)
-    },
     getStatus(userId) {
         return instance.get(`/profile/status/${userId ? userId : 14387}`)
     },
     updateStatus(status) {
         return instance.put('/profile/status', { status })
+    },
+    auth() {
+        return instance.get('/auth/me')
+            .then(res => res.data)
+    },
+    login(formData) {
+        return instance.post('/auth/login', formData)
     }
 }
 

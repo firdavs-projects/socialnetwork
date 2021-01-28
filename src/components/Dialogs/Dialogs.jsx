@@ -2,17 +2,12 @@ import React from 'react'
 import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Message from './Message/Message'
+import MessageReduxForm from './MessageForm/MessageForm'
 
 const Dialogs = (props) => {
-    const newMessageBody = props.dialogsPage.newMessageBody
 
-    const onSendMessageClick = () => {
-        props.sendMessage()
-    }
-
-    const onNewMessageChange = (ev) => {
-        const body = ev.target.value
-        props.updateNewMessageBody(body)
+    const onSubmit = (formData) => {
+        props.sendMessage(formData.newMessageBody)
     }
 
     return (
@@ -32,12 +27,8 @@ const Dialogs = (props) => {
                 </div>
                 <div className={s.absolute}>
                     <div className={s.newmessage}>
-                        <textarea className={s.textarea}
-                            onChange={onNewMessageChange}
-                            value={newMessageBody}
-                            placeholder="Enter your message"
-                        ></textarea>
-                        <button onClick={onSendMessageClick}>Send</button>
+
+                        <MessageReduxForm onSubmit={onSubmit} />
                     </div>
                 </div>
             </div>
