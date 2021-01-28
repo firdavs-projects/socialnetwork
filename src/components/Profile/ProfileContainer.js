@@ -10,7 +10,11 @@ import Loader from '../Loader/Loader'
 class ProfileContainer extends Component {
 
     componentDidMount() {
-        const userId = this.props.match.params.userId
+        let userId = this.props.match.params.userId
+        if (!userId) {
+            userId = this.props.authUserId
+        }
+
         this.props.getProfile(userId)
         this.props.getStatus(userId)
     }
@@ -34,7 +38,9 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 })
 
 export default compose(
