@@ -32,7 +32,7 @@ export const setUserData = (userId, email, login, isAuth) => ({
 
 export const authMe = () => {
     return (dispatch) => {
-        profileAPI.auth()
+       return profileAPI.auth()
             .then(data => {
                 if (data.resultCode === 0) {
                     const { id, login, email } = data.data
