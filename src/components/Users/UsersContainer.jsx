@@ -7,6 +7,7 @@ import {
 } from '../../Redux/usersReducer'
 import Users from './Users'
 import Loader from '../Loader/Loader'
+import { getUsersState, getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getSetIsFetching, getTotalUsersCount } from '../../Redux/usersSelectors'
 
 class UsersContainer extends Component {
 
@@ -37,15 +38,27 @@ class UsersContainer extends Component {
     }
 }
 
+// const mapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         setIsFetching: state.usersPage.setIsFetching,
+//         followingInProgress: state.usersPage.followingInProgress
+//     }
+// }
+
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        setIsFetching: state.usersPage.setIsFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsersState(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        setIsFetching: getSetIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 
