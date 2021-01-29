@@ -7,7 +7,7 @@ import {
 } from '../../Redux/usersReducer'
 import Users from './Users'
 import Loader from '../Loader/Loader'
-import { getUsersState, getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getSetIsFetching, getTotalUsersCount } from '../../Redux/usersSelectors'
+import { getUsersSuperSelector, getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getSetIsFetching, getTotalUsersCount } from '../../Redux/usersSelectors'
 
 class UsersContainer extends Component {
 
@@ -52,7 +52,7 @@ class UsersContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: getUsersState(state),
+        users: getUsersSuperSelector(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
