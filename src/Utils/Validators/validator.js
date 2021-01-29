@@ -1,5 +1,4 @@
 export const required = (value) => {
-
     if (value) {
         return undefined
     }
@@ -11,9 +10,4 @@ export const maxLengthCreator = (maxLength) => (value) => {
         return `Max length is ${maxLength} symbols`
     }
     return undefined;
-
-}
-
-export const maxLength30 = (value) => {
-
 }

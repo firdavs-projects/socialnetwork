@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 import PostReduxForm from './PostForm/PostForm'
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
     const onAddPost = (post) => {
         console.log(post);
@@ -21,6 +21,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default MyPosts
