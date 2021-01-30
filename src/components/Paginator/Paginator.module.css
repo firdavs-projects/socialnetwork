@@ -1,0 +1,42 @@
+.user {
+  display: block;
+}
+
+.user a {
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+}
+
+.imgBlock {
+  margin: 10px;
+  display: flex;
+  cursor: pointer;
+}
+
+.imgBlock > span {
+  margin-left: 20px;
+}
+
+.btnBlock {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.photo {
+  width: 50px;
+}
+
+.selectedPage {
+  font-weight: bold;
+  color: gold;
+  margin: 5px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.pages {
+  margin: 5px;
+  padding: 3px;
+  cursor: pointer;
+}

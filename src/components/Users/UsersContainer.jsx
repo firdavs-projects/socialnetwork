@@ -38,18 +38,6 @@ class UsersContainer extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         setIsFetching: state.usersPage.setIsFetching,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
-
 const mapStateToProps = (state) => {
     return {
         users: getUsersSuperSelector(state),
@@ -67,23 +55,3 @@ export default connect(mapStateToProps, {
     unfollowUser,
     followUser
 })(UsersContainer)
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (page) => {
-//             dispatch(setCurrentPageAC(page))
-//         },
-//         setTotalUsersCount: (total) => {
-//             dispatch(setTotalUsersCountAC(total))
-//         },
-//         setIsFetching: (isFetching) => {
-//             dispatch(setIsFetching(isFetching))
-//         }
-//     }
-// }

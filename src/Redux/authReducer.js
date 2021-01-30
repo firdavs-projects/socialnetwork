@@ -31,43 +31,38 @@ export const setUserData = (userId, email, login, isAuth) => ({
 })
 
 export const authMe = () => {
-    return (dispatch) => {
-       return profileAPI.auth()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    const { id, login, email } = data.data
-                    dispatch(setUserData(id, email, login, true))
-                }
-            })
+    return async (dispatch) => {
+        const data = await profileAPI.auth()
+        if (data.resultCode === 0) {
+            const { id, login, email } = data.data
+            dispatch(setUserData(id, email, login, true))
+        }
+        return data
     }
 }
 
 export const loginMe = (email, password, rememberMe) => {
 
-    return (dispatch) => {
-        profileAPI.login(email, password, rememberMe)
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch(authMe())
-                } else {
-                    const message = res.data.messages.length > 0
-                        ? res.data.messages[0]
-                        : 'Some error'
-                    const action = stopSubmit('login', { _error: message })
-                    dispatch(action)
-                }
-            })
+    return async (dispatch) => {
+        const res = await profileAPI.login(email, password, rememberMe)
+        if (res.data.resultCode === 0) {
+            dispatch(authMe())
+        } else {
+            const message = res.data.messages.length > 0
+                ? res.data.messages[0]
+                : 'Some error'
+            const action = stopSubmit('login', { _error: message })
+            dispatch(action)
+        }
     }
 }
 
 export const logoutMe = () => {
-    return (dispatch) => {
-        profileAPI.logout()
-            .then(data => {
-                if (data.data.resultCode === 0) {
-                    dispatch(setUserData(null, null, null, false))
-                }
-            })
+    return async (dispatch) => {
+        const res = await profileAPI.logout()
+        if (res.data.resultCode === 0) {
+            dispatch(setUserData(null, null, null, false))
+        }
     }
 }
 

@@ -34,7 +34,6 @@ const ProfileInfo = (props) => {
                     {props.profile.contacts.youtube && <a href={props.profile.contacts.youtube}>Youtube</a>}
                     {props.profile.contacts.github && <a href={props.profile.contacts.github}>Github</a>}
                     {props.profile.contacts.mainLink && <a href={props.profile.contacts.mainLink}>MainLink</a>}
-
                 </div>
             </div>
         </div >
