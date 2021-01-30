@@ -11,6 +11,7 @@ const Users = (props) => {
                 pageSize={props.pageSize}
                 onPageChange={props.onPageChange}
                 currentPage={props.currentPage}
+                portionSize={props.pageSize}
             />
 
             {
