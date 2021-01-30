@@ -15,8 +15,13 @@ test('new post should be added', () => {
 });
 
 test('new post text will be correct', () => {
+    // 1.test data
     let action = addPostActionCreator('Hello World')
+
+    // 2.actions
     let newState = profileReducer(state, action);
+
+    // 3.expection
     expect(newState.posts[0].post).toBe('Hello World');
 });
 

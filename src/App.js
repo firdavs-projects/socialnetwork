@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
-import { Route, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderComponent from './components/Header/HeaderComponent';
 import Login from './components/Login/Login';
 import { initializeApp } from './Redux/appReducer';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import Loader from './components/Loader/Loader';
+import store from './Redux/reduxStore'
 
 class App extends Component {
 
@@ -58,7 +59,16 @@ const mstp = (state) => ({
   initialized: state.app.initialized
 })
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mstp, { initializeApp })
 )(App);
+
+const MainApp = (props) => {
+  return <Provider store={store}>
+    <BrowserRouter>
+      <AppContainer />
+    </BrowserRouter>
+  </Provider>
+}
+export default MainApp
